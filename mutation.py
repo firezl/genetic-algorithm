@@ -15,3 +15,10 @@ def mutation(pop, pm):
         else:
             newpop[i, :] = pop[i, :]
     return newpop
+
+
+if __name__ == "__main__":
+    pop = np.array([[0, 0, 0, 0, 0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [
+                   1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 0, 0, 0, 0, 0]])
+    pm = 0.5
+    mutation(pop, pm)

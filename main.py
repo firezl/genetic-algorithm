@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from pylab import mpl
 
 from best import best
 from binary2decimal import binary2decimal
@@ -9,24 +10,29 @@ from initpop import initpop
 from mutation import mutation
 from selection import selection
 
+mpl.rcParams["font.sans-serif"] = ["SimHei"]
+
 popsize = 1000
 chromlength = 10
 pc = 0.6
 pm = 0.01
+iteration = 500
 pop = initpop(popsize, chromlength)
 print(pop)
-for i in range(0, 500):
+for i in range(0, iteration):
     objvalue = cal_objvalue(pop)
     fitvalue = objvalue
     newpop = selection(pop, fitvalue)
     newpop = crossover(newpop, pc)
     newpop = mutation(newpop, pm)
     pop = newpop
+    objvalue = cal_objvalue(pop)
+    fitvalue = objvalue
     bestindividual, bestfit = best(pop, fitvalue)
     x2 = binary2decimal(bestindividual)
     x1 = binary2decimal(newpop)
     y1 = cal_objvalue(newpop)
-    if (i+1) % 500 == 0:
+    if (i+1) % iteration == 0:
         x = np.linspace(0, 10, 100)
         y = 10 * np.sin(5 * x) + 7 * np.abs(x - 5) + 10
         fig = plt.figure()

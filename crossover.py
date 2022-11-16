@@ -13,5 +13,12 @@ def crossover(pop, pc):
                    :] = np.concatenate((pop[i+1, 0:cpoint], pop[i, cpoint:py]))
         else:
             newpop[i, :] = pop[i, :]
-            newpop[i+1, :] = newpop[i+1, :]
+            newpop[i+1, :] = pop[i+1, :]
     return newpop
+
+
+if __name__ == "__main__":
+    pop = np.array([[0, 0, 0, 0, 0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [
+                   1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 0, 0, 0, 0, 0]])
+    pc = 0.6
+    crossover(pop, pc)

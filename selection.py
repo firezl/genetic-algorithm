@@ -9,7 +9,7 @@ def selection(pop, fitvalue):
     ms = np.sort(np.random.rand(px))
     fitin = 0
     newin = 0
-    newpop = np.zeros_like(pop)
+    newpop = np.ones_like(pop)
     while newin < px:
         if ms[newin] < p_fitvalue[fitin]:
             newpop[newin, :] = pop[fitin, :]
